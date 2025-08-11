@@ -4,10 +4,13 @@
   "description": "A tets npm project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
-  "author": "louis bollinne",
+  "author": "loux",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Louis5487/test-npm.git"
@@ -15,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/Louis5487/test-npm/issues"
   },
-  "homepage": "https://github.com/Louis5487/test-npm#readme"
+  "homepage": "https://github.com/Louis5487/test-npm#readme",
+  "dependencies": {
+    "@linclark/pkg": "^1.0.3",
+    "micromodal": "^0.6.1"
+  }
 }
