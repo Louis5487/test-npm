@@ -1,0 +1,212 @@
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main {
+    background-color: #e8e8e8;
+    border: 4px solid #000;
+    border-radius: 20px;
+    padding: 60px 80px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 500px;
+    position: relative;
+}
+
+/* Header avec timezone et bouton */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#timezone {
+    color: #888;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+}
+
+button[data-micromodal-trigger] {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+button[data-micromodal-trigger]:hover {
+    color: #000;
+}
+
+/* Affichage de l'heure - style digital */
+#time {
+    font-size: 72px;
+    font-weight: bold;
+    color: #000;
+    font-family: "Courier New", monospace;
+    letter-spacing: 2px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Affichage de la date */
+#date {
+    font-size: 18px;
+    color: #666;
+    font-weight: normal;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Ligne de séparation après le timezone */
+#timezone::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    width: 200px;
+    height: 2px;
+    background-color: #000;
+}
+
+/* Labels explicatifs (comme dans l'image) */
+#main::before {
+    content: "Name of User's timezone";
+    position: absolute;
+    top: 15px;
+    right: -180px;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+
+#main::after {
+    content: "Current time of user with seconds";
+    position: absolute;
+    top: 120px;
+    right: -220px;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+
+/* Style pour le modal */
+.modal {
+    display: none;
+}
+
+.modal[aria-hidden="false"] {
+    display: flex;
+}
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal__container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-width: 400px;
+}
+
+.modal__container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal__container h2 {
+    margin: 0;
+    color: #333;
+}
+
+.modal__container button[data-micromodal-close] {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal__container button[data-micromodal-close]:hover {
+    color: #000;
+}
+
+/* Styles du formulaire */
+#tz-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#tz-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+#tz-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#tz-form button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#tz-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #main {
+        min-width: 350px;
+        padding: 40px 50px;
+    }
+
+    #time {
+        font-size: 48px;
+    }
+
+    #main::before,
+    #main::after {
+        display: none;
+    }
+}

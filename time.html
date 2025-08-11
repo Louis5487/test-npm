@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <link rel="stylesheet" href="timestyle.css" />
+        <meta charset="UTF-8" />
+        <title>MicroModal minimal avec styles</title>
+    </head>
+    <body>
+        <div id="main">
+            <!-- Main Page-->
+            <div id="header">
+                <button data-micromodal-trigger="modal-1">Ouvrir modal</button>
+                <div id="timezone"></div>
+            </div>
+
+            <div id="time"></div>
+            <div id="date"></div>
+            <!-- Modal -->
+            <div class="modal" id="modal-1" aria-hidden="true">
+                <div tabindex="-1" data-micromodal-close class="modal__overlay">
+                    <div role="dialog" aria-modal="true" aria-labelledby="modal-1-title" class="modal__container">
+                        <header>
+                            <h2 id="modal-1-title">Change Timezone</h2>
+                            <button aria-label="Fermer modal" data-micromodal-close>close</button>
+                        </header>
+                        <form id="tz-form">
+                            <label for="timezone">Choisissez un fuseau horaire :</label>
+                            <select id="timezone" name="timezone" required>
+                                <option value="">-- Sélectionnez une timezone --</option>
+                                <option value="Europe/Paris">Europe/Paris (CET)</option>
+                                <option value="Europe/London">Europe/London (GMT)</option>
+                                <option value="America/New_York">America/New_York (EST)</option>
+                                <option value="America/Los_Angeles">America/Los_Angeles (PST)</option>
+                                <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                                <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
+                                <option value="UTC">UTC</option>
+                            </select>
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+        <script>
+            dayjs.extend(dayjs_plugin_utc);
+            dayjs.extend(dayjs_plugin_timezone);
+            let tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            function showDateTime() {
+                const now = dayjs().tz(tz);
+                document.getElementById("date").textContent = now.format("DD/MM/YYYY");
+                document.getElementById("time").textContent = now.format("HH:mm:ss");
+            }
+            MicroModal.init();
+            const form = document.getElementById("tz-form");
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                tz = form.timezone.value;
+                document.getElementById("timezone").textContent = tz;
+                MicroModal.close();
+            });
+            showDateTime();
+            setInterval(showDateTime, 1000);
+            document.getElementById("timezone").textContent = tz;
+        </script>
+    </body>
+</html>
