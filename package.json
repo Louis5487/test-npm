@@ -1,0 +1,19 @@
+{
+  "name": "@loux5487/testenv",
+  "version": "1.0.0",
+  "description": "A tets npm project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "louis bollinne",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Louis5487/test-npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Louis5487/test-npm/issues"
+  },
+  "homepage": "https://github.com/Louis5487/test-npm#readme"
+}
